@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<examples>
+    <insert>
+        <example>
+            <file>basic</file>
+            <name>Basico</name>
+            <title>Insert Básico</title>
+            <code>
+//Cria a instancia da classe SqlInsert
+$insert = new \core\data\dbquery\SqlInsert();
+//Define o nome da tabela
+$insert->setEntity('Cliente');
+//Define os dados que serão inseridos com o nome do campo e download
+$insert->setRowData('nome', 'Ronaldo');
+$insert->setRowData('email', 'email@email.com');
+$insert->setRowData('idade', '20');
+
+echo $insert->getInstruction();
+            </code>
+            <result>
+                INSERT INTO Cliente (nome, email, idade) values ('Ronaldo', 'email@email.com', '20')
+            </result>
+            <text>
+                Criação
+            </text>
+        </example>
+    </insert>
+    <criteria>
+        <example>
+            <file>basic</file>
+            <name>Basico</name>
+            <title>Criteria Básico</title>
+            <code>
+$criteria = new SqlCriteria();
+$criteria->add(new SqlFilter('id', '=', 1));
+
+echo $criteria->dump();
+            </code>
+            <result>
+                (id = 1)
+            </result>
+            <text>
+                Criterio de seleção básico onde o registro é selecionado a partir
+                de um id.
+            </text>
+        </example>
+        <example>
+            <file>basic2</file>
+            <name>Basico 2</name>
+            <title>Criteria Básico 2</title>
+            <code>
+$criteria = new SqlCriteria();
+$criteria->add(new SqlFilter('id', '=', 1));
+$criteria->add(new SqlFilter('dataNascimento', '=', '1986-08-20'));
+
+echo $criteria->dump();
+            </code>
+            <result>
+                (id = 1 AND dataNascimento = "1986-08-20")
+            </result>
+            <text>
+                Criterio de seleção básico onde o registro é selecionado a partir
+                de um id e data de nascimento.
+            </text>
+        </example>
+    </criteria>
+</examples>
