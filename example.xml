@@ -15,13 +15,14 @@ $insert->setRowData('nome', 'Ronaldo');
 $insert->setRowData('email', 'email@email.com');
 $insert->setRowData('idade', '20');
 
+//Obtem a string gerada pela a classe
 echo $insert->getInstruction();
             </code>
             <result>
                 INSERT INTO Cliente (nome, email, idade) values ('Ronaldo', 'email@email.com', '20')
             </result>
             <text>
-                Criação
+                Abaixo demonstramos com criar uma query de insert básica.
             </text>
         </example>
     </insert>
@@ -46,8 +47,8 @@ echo $criteria->dump();
         </example>
         <example>
             <file>basic2</file>
-            <name>Basico 2</name>
-            <title>Criteria Básico 2</title>
+            <name>Operador AND</name>
+            <title>Operador AND</title>
             <code>
 $criteria = new SqlCriteria();
 $criteria->add(new SqlFilter('id', '=', 1));
@@ -61,6 +62,26 @@ echo $criteria->dump();
             <text>
                 Criterio de seleção básico onde o registro é selecionado a partir
                 de um id e data de nascimento.
+            </text>
+        </example>
+        <example>
+            <file>operadoror</file>
+            <name>Operador OR</name>
+            <title>Operador OR</title>
+            <code>
+
+$criteria = new core\data\dbquery\SqlCriteria();
+$criteria->add(new \core\data\dbquery\SqlFilter('id', '=', 1));
+$criteria->add(new \core\data\dbquery\SqlFilter('dataNascimento', '=', '1986-08-20'), \core\data\dbquery\SqlExpression::OR_OPERATOR);
+
+echo $criteria->dump();
+            </code>
+            <result>
+                (id = 1 OR dataNascimento = "1986-08-20")
+            </result>
+            <text>
+                Criterio de seleção básico onde o registro é selecionado a partir
+                de um id ou data de nascimento.
             </text>
         </example>
     </criteria>
