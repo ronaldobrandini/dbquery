@@ -1,5 +1,5 @@
 <?php
-namespace db;
+namespace core\data\dbquery;
 class SqlJoin extends SqlInstruction{
     private $type;
     private $filter = '';

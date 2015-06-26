@@ -1,5 +1,5 @@
 <?php
-namespace db;
+namespace core\data\dbquery;
 final class SqlSelect extends SqlInstruction{
     
     private $columns = array();

@@ -1,7 +1,4 @@
 <?php
-
-include_once('../../../core/config/cfg.php');
-
 //Cria a instancia da classe SqlInsert
 $insert = new \core\data\dbquery\SqlInsert();
 //Define o nome da tabela
