@@ -33,4 +33,4 @@ border-right:1px solid #dadada;
 .active2 {
     border-right:4px solid #428bca;
 }
-
+.hljs code{ white-space: nowrap;}

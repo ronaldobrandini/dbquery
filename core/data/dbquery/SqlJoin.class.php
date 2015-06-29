@@ -2,7 +2,7 @@
 namespace core\data\dbquery;
 class SqlJoin extends SqlInstruction{
     private $type;
-    private $filter = '';
+    private $filters = array();
     
     public function __construct($type, $entity){
         $this->type = $type;
@@ -10,13 +10,13 @@ class SqlJoin extends SqlInstruction{
     }
     
     
-    public function addFilter($variable, $operator, $value, $filter = 'ON'){
+    public function addFilter($variable, $operator, $value, $filter = SqlExpression::ON_OPERATOR){
                 
-        $this->filter .= " {$filter} {$variable} {$operator} {$value} ";
+        $this->filters[] = " {$filter} {$variable} {$operator} {$value} ";
     }
 
 
     public function getInstruction(){
-        return " {$this->type} JOIN {$this->entity} {$this->filter} ";
+        return " {$this->type} JOIN {$this->entity} " . implode(' ', $this->filters);
     }
 }

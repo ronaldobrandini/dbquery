@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<docs>
+    <requerimento>
+        <title>Requerimentos do sistema</title>
+        <paragrafo>
+            DBQuery é uma ferramenta desenvolvida em PHP
+        </paragrafo>
+    </requerimento>
+</docs>

@@ -1,5 +1,5 @@
 <?php
-namespace db;
+namespace core\data\dbquery;
 class SqlDelete extends SqlInstruction{
     public function getInstruction(){
         $this->sql = "DELETE FROM {$this->entity}";

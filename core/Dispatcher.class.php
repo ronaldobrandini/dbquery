@@ -217,6 +217,7 @@ class Dispatcher{
     private function loadRoutes(){
         $this->addRoute(0, '/', 'index');
         $this->addRoute(1, '/demo(/:type)(/:demo)', 'demo');
+        $this->addRoute(2, '/doc(/:type)(/:nome)', 'doc');
     }
 
 }

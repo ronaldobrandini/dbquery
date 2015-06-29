@@ -1,5 +1,5 @@
 <?php
-namespace db;
+namespace core\data\dbquery;
 class SqlUpdate extends SqlInstruction{
     private $columnValues;
     public function setRowData($column, $value){

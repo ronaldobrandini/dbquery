@@ -4,7 +4,8 @@
             <div>
                 <ul class="nav nav-list">
                     <!-- BEGIN block_example_type -->
-                    <li><label class="tree-toggler nav-header">{title}</label>
+                    <li>
+                        <label class="tree-toggler nav-header">{title}</label>
                         <ul class="nav nav-list tree">
                             <!-- BEGIN block_example -->
                             <li><a href="{link}">{name}</a></li>

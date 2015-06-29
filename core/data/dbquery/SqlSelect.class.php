@@ -14,7 +14,7 @@ final class SqlSelect extends SqlInstruction{
         }
     }
     
-    public function setJoin(\db\SqlJoin $sqlJoin){
+    public function setJoin(SqlJoin $sqlJoin){
         $this->joins[] = $sqlJoin;
     }
     

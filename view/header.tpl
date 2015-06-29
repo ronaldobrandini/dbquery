@@ -100,10 +100,27 @@
                     </ul>
                 </li>-->
                 <li>
-                    <a href="?controller=perfil">Perfis</a>
+                    <a href="/dbquery/demo">Demonstação</a>
                 </li>
-                <li>
-                    <a href="?controller=aparelho">Aparelho</a>
+                <li class="dropdown">
+                    <a href="javascript: void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        Documentação
+                        <i class="glyphicon glyphicon-menu-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/dbquery/doc/geral">
+                                Geral
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dbquery/doc/api">API de Referencia</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/dbquery/doc/changelog">Changelog</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
 

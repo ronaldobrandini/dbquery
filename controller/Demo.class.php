@@ -14,6 +14,7 @@ class Demo extends Controller {
         'insert',
         'delete',
         'select',
+        'join',
         'update',
         'criteria'
     );
