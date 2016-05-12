@@ -5,6 +5,7 @@
     "authors": [
         {"name": "Ronaldo Silva", "email": "rony.praise@gmail.com"}
     ],
+    "description": "SQL Query creator",
     "require": {
         "php": ">=5.3"
     }
