@@ -2,10 +2,10 @@
     "name": "rony/dbquery",
     "type": "library",
     "license": "MIT",
+    "description": "SQL Query creator",
     "authors": [
         {"name": "Ronaldo Silva", "email": "rony.praise@gmail.com"}
     ],
-    "description": "SQL Query creator",
     "require": {
         "php": ">=5.3"
     },
