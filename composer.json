@@ -13,6 +13,6 @@
         "phpunit/phpunit": "~4.0"
     },
     "autoload": {
-        "psr-4": {"lib\\": "lib/"}
+        "psr-4": {"DBQuery\\": "lib/"}
     }
 }
