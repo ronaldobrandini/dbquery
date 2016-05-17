@@ -1,7 +1,7 @@
 <?php
 
-use lib\SqlInsert;
-use lib\SqlCriteria;
+use DBQuery\SqlInsert;
+use DBQuery\SqlCriteria;
 
 class SqlInsertTest extends \PHPUnit_Framework_TestCase
 {

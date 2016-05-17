@@ -1,8 +1,8 @@
 <?php
 
-use lib\SqlJoin;
-use lib\SqlFilter;
-use lib\SqlExpression;
+use DBQuery\SqlJoin;
+use DBQuery\SqlFilter;
+use DBQuery\SqlExpression;
 
 /**
  * Description of SqlJoinTest

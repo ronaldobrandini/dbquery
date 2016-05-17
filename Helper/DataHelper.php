@@ -32,9 +32,9 @@ abstract class DataHelper
             $result = 'null';
         }else if(is_bool($value)){
             $result = ($value) ? 'true' : 'false';
-        }else if($value instanceof \lib\SqlInstruction){
+        }else if($value instanceof \DBQuery\SqlInstruction){
             $result = '(' . $value->getInstruction() . ')';
-        }else if($value instanceof \lib\SqlBetween){
+        }else if($value instanceof \DBQuery\SqlBetween){
             $result = $value->dump();
         }else{
             $result = $value;

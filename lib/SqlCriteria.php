@@ -1,5 +1,5 @@
 <?php
-namespace lib;
+namespace DBQuery;
 /**
  * 
  */
@@ -16,7 +16,7 @@ class SqlCriteria extends SqlExpression{
     /**
      * Add a new filter into criteria
      * 
-     * @param lib\SqlExpression $expression
+     * @param DBQuery\SqlExpression $expression
      * @param string $operador
      */
     public function add(SqlExpression $expression, $operador = self::_AND_){

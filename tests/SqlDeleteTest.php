@@ -1,9 +1,9 @@
 <?php
 
-use lib\SqlDelete;
-use lib\SqlCriteria;
-use lib\SqlFilter;
-use lib\SqlExpression;
+use DBQuery\SqlDelete;
+use DBQuery\SqlCriteria;
+use DBQuery\SqlFilter;
+use DBQuery\SqlExpression;
 
 
 class SqlDeleteTest extends \PHPUnit_Framework_TestCase

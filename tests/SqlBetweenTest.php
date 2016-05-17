@@ -1,7 +1,7 @@
 <?php
 
-use lib\SqlBetween;
-use lib\SqlExpression;
+use DBQuery\SqlBetween;
+use DBQuery\SqlExpression;
 
 /**
  * Description of SqlBetweenTest

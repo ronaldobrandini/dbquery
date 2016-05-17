@@ -1,5 +1,5 @@
 <?php
-namespace lib;
+namespace DBQuery;
 class SqlDelete extends SqlInstruction{
     
     public function setRowData($column, $value, $stringForces = true)

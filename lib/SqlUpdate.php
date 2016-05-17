@@ -1,5 +1,5 @@
 <?php
-namespace lib;
+namespace DBQuery;
 
 
 class SqlUpdate extends SqlInstruction{

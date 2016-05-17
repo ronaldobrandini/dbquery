@@ -15,7 +15,7 @@ $ composer require rony/DBQuery
 ```php
 <?php
 
-use lib\SqlSelect;
+use DBQuery\SqlSelect;
 
 $sqlString = 'SELECT * FROM user';
         

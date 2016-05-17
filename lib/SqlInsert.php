@@ -1,5 +1,5 @@
 <?php
-namespace lib;
+namespace DBQuery;
 use Helper\DataHelper;
 
 class SqlInsert extends SqlInstruction{

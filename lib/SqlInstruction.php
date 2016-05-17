@@ -1,8 +1,8 @@
 <?php
 
-namespace lib;
+namespace DBQuery;
 
-use \lib\SqlCriteria;
+use \DBQuery\SqlCriteria;
 use Helper\DataHelper;
 
 abstract class SqlInstruction {
@@ -14,7 +14,7 @@ abstract class SqlInstruction {
     protected $sql;
     /**
      *
-     * @var lib\Criteria 
+     * @var DBQuery\Criteria 
      */
     protected $criteria;
     /**
@@ -44,7 +44,7 @@ abstract class SqlInstruction {
     }
     /**
      * Set the criteria of query
-     * @param lib\SqlCriteria $sqlCriteria
+     * @param DBQuery\SqlCriteria $sqlCriteria
      */
     public function setCriteria(SqlCriteria $sqlCriteria){
         $this->criteria = $sqlCriteria;

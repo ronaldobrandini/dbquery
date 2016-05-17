@@ -1,5 +1,5 @@
 <?php
-namespace lib;
+namespace DBQuery;
 use Exception\DbQueryColumnsNotSet;
 use Exception\DbQueryEntityNotSet;
 

@@ -1,5 +1,5 @@
 <?php
-use lib\SqlSelect;
+use DBQuery\SqlSelect;
 
 //Estancia a classe select
 $select = new SqlSelect();

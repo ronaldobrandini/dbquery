@@ -1,9 +1,9 @@
 <?php
 
-use lib\SqlUpdate;
-use lib\SqlCriteria;
-use lib\SqlFilter;
-use lib\SqlExpression;
+use DBQuery\SqlUpdate;
+use DBQuery\SqlCriteria;
+use DBQuery\SqlFilter;
+use DBQuery\SqlExpression;
 
 /**
  * Description of SqlUpdateTest

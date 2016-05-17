@@ -1,7 +1,7 @@
 <?php
 
-use lib\SqlSelect;
-use lib\SqlInsert;
+use DBQuery\SqlSelect;
+use DBQuery\SqlInsert;
 
 class SqlInstructionTest extends \PHPUnit_Framework_TestCase
 {

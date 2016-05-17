@@ -1,8 +1,8 @@
 <?php
 
-namespace lib;
-use lib\SqlFilter;
-use lib\SqlExpression;
+namespace DBQuery;
+use DBQuery\SqlFilter;
+use DBQuery\SqlExpression;
 use Helper\DataHelper;
 /**
  * Description of SqlBetween

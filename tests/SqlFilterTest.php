@@ -1,9 +1,9 @@
 <?php
 
-use lib\SqlFilter;
-use lib\SqlExpression;
-use lib\SqlSelect;
-use lib\SqlBetween;
+use DBQuery\SqlFilter;
+use DBQuery\SqlExpression;
+use DBQuery\SqlSelect;
+use DBQuery\SqlBetween;
 
 /**
  * Description of SqlFilterTest

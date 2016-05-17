@@ -1,9 +1,9 @@
 <?php
 
-use lib\SqlSelect;
-use lib\SqlCriteria;
-use lib\SqlFilter;
-use lib\SqlExpression;
+use DBQuery\SqlSelect;
+use DBQuery\SqlCriteria;
+use DBQuery\SqlFilter;
+use DBQuery\SqlExpression;
 
 /**
  * Description of SqlSelectTest
@@ -30,7 +30,7 @@ class SqlSelectTest extends \PHPUnit_Framework_TestCase
         $sqlString = 'SELECT * FROM user WHERE (id = 1)';
         
         $criteria = new SqlCriteria();
-        $criteria->add(new lib\SqlFilter('id', SqlExpression::_EQUAL_, 1));
+        $criteria->add(new DBQuery\SqlFilter('id', SqlExpression::_EQUAL_, 1));
         
         $sqlSelect = new SqlSelect();
         $sqlSelect->addColumn('*');

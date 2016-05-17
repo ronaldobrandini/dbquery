@@ -1,9 +1,9 @@
 <?php
 
-namespace lib;
+namespace DBQuery;
 
-use lib\SqlInstruction;
-use lib\SqlExpression;
+use DBQuery\SqlInstruction;
+use DBQuery\SqlExpression;
 
 class SqlJoin extends SqlInstruction
 {

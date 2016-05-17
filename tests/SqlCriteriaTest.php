@@ -1,9 +1,9 @@
 <?php
 
-use lib\SqlSelect;
-use lib\SqlCriteria;
-use lib\SqlFilter;
-use lib\SqlExpression;
+use DBQuery\SqlSelect;
+use DBQuery\SqlCriteria;
+use DBQuery\SqlFilter;
+use DBQuery\SqlExpression;
 
 /**
  * Description of SqlCriteriaTest

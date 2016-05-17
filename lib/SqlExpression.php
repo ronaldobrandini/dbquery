@@ -1,5 +1,5 @@
 <?php
-namespace lib;
+namespace DBQuery;
 abstract class SqlExpression {
     const _LIMIT_ = ' LIMIT ';
     const _ORDER_ = ' ORDER BY ';
