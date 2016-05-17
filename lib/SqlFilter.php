@@ -1,6 +1,7 @@
 <?php
 
 namespace lib;
+use Helper\DataHelper;
 /**
  * 
  * Public Class SqlFilter
@@ -21,7 +22,7 @@ class SqlFilter extends SqlExpression{
     private $variable;
     /**
      *
-     * @var string Operador utilizado na consulta <b>Ex:</b><br>
+     * @var string Operador utilizado na consulta <b>Ex:</b>
      * =, <>, < >, in, not in, etc..
      */
     private $operator;
@@ -32,9 +33,9 @@ class SqlFilter extends SqlExpression{
     private $value;
     /**
      * 
-     * @param string $variable Valor utilizado para comparação <b>Ex:</b><br>
+     * @param string $variable Valor utilizado para comparação <b>Ex:</b>
      * coluna ou C.coluna 
-     * @param string $operator Operador utilizado na consulta <b>Ex:</b><br>
+     * @param string $operator Operador utilizado na consulta <b>Ex:</b>
      * =, <>, < >, in, not in, etc..
      * @param mixed $value Valor da clausula, caso seja uma string tratára 
      * sqlInjection e acresentara "", caso booleano convertera para string 'true' 
@@ -45,38 +46,10 @@ class SqlFilter extends SqlExpression{
     public function __construct($variable, $operator, $value, $stringForces = true){
         $this->variable = $variable;
         $this->operator = $operator;
-        $this->value = $this->transform($value, $stringForces);
+        $this->value = DataHelper::transform($value, $stringForces);
         
     }
-    /**
-     * Converte os valores passados para formar a string da consulta 
-     * corretamente.
-     * 
-     * @param mixed $value Valor a ser testado
-     * @return mixed Retorna o valor convertido
-     */
-    private function transform($value, $stringForces){
-        if(is_array($value)){
-            $strAux = array();
-            foreach($value as $x){
-                if(is_integer($x)){
-                    $strAux[] = $x;
-                }else if(is_string($x)){
-                    $strAux[] = '"' . $x . '"';
-                }
-            }
-            $result = '(' . implode(', ', $strAux ) . ')';
-        }else if(is_string($value) && $stringForces){
-            $result = '"' . $value . '"';
-        }else if(is_null($value)){
-            $result = 'null';
-        }else if(is_bool($value)){
-            $result = ($value) ? 'true' : 'false';
-        }else{
-            $result = $value;
-        }
-        return $result;
-    }
+    
     /**
      * Retorna a string já formatada
      * @return string Retorna o filtro coluna = valor

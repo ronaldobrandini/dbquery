@@ -34,7 +34,7 @@ class SqlCriteriaTest extends \PHPUnit_Framework_TestCase
     
     public function testMultipleExpression()
     {
-        $str = '((id = 1 AND active = 1) OR (date = "2015-01-01" AND dateCreate = "2015-01-01"))';
+        $str = '((id = 1 AND active = 1) OR (date = \'2015-01-01\' AND dateCreate = \'2015-01-01\'))';
         
         $sqlCriteria1 = new SqlCriteria();
         $sqlCriteria1->add(new SqlFilter('id', SqlExpression::_EQUAL_, 1));
@@ -82,6 +82,20 @@ class SqlCriteriaTest extends \PHPUnit_Framework_TestCase
         $this->fail('A waiting exception not throws.');
     }
     
+    public function testPropertyLimitSetEmpty()
+    {   
+        try{
+            $sqlCriteria = new SqlCriteria();
+            $sqlCriteria->setProperty(SqlSelect::SQL_LIMIT, '');
+            // Assert
+            $this->assertEquals(null, $sqlCriteria->getProperty(SqlSelect::SQL_LIMIT));
+        } catch (InvalidArgumentException $e){
+            $this->assertTrue(true);
+            return;
+        }
+        $this->fail('A waiting exception not throws.');
+    }
+    
     public function testPropertyOffset()
     {
         $sqlCriteria = new SqlCriteria();
@@ -111,6 +125,19 @@ class SqlCriteriaTest extends \PHPUnit_Framework_TestCase
         $this->fail('A waiting exception not throws.');
     }
     
+    public function testPropertyOffsetSetEmpty()
+    {   
+        try{
+            $sqlCriteria = new SqlCriteria();
+            $sqlCriteria->setProperty(SqlSelect::SQL_OFFSET, '');
+        } catch (InvalidArgumentException $e){
+            $this->assertTrue(true);
+            return;
+        }
+        // Assert
+        $this->fail('A waiting exception not throws.');
+    }
+    
     public function testPropertyOrderby()
     {
         $sqlCriteria = new SqlCriteria();
@@ -132,6 +159,27 @@ class SqlCriteriaTest extends \PHPUnit_Framework_TestCase
         try{
             $sqlCriteria = new SqlCriteria();
             $sqlCriteria->setProperty(SqlSelect::SQL_ORDERBY, null);
+        }  catch (InvalidArgumentException $e){
+            $this->assertTrue(true);
+            return;
+        }
+        // Assert
+        $this->fail('A waiting exception not throws.');
+    }
+    
+    public function testPropertyOrderbySetDesc()
+    {   
+        $sqlCriteria = new SqlCriteria();
+        $sqlCriteria->setProperty(SqlSelect::SQL_ORDERBY, 1, SqlExpression::_DESC_);
+        // Assert
+        $this->assertEquals('1 DESC ', $sqlCriteria->getProperty(SqlSelect::SQL_ORDERBY));
+    }
+    
+    public function testPropertyOrderbySetEmpty()
+    {   
+        try{
+            $sqlCriteria = new SqlCriteria();
+            $sqlCriteria->setProperty(SqlSelect::SQL_ORDERBY, '');
         }  catch (InvalidArgumentException $e){
             $this->assertTrue(true);
             return;

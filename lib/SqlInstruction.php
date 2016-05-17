@@ -3,6 +3,7 @@
 namespace lib;
 
 use \lib\SqlCriteria;
+use Helper\DataHelper;
 
 abstract class SqlInstruction {
     /**
@@ -13,7 +14,7 @@ abstract class SqlInstruction {
     protected $sql;
     /**
      *
-     * @var \lib\dbquery\Criteria 
+     * @var lib\Criteria 
      */
     protected $criteria;
     /**
@@ -22,32 +23,42 @@ abstract class SqlInstruction {
      */
     protected $entity;
 
+    protected $columnValues;
+     
     /**
-     * Define o nome da tabela que sera trabalhado
+     * Set the table/Entity to manipulate
      * @param string $entity
      */
     final public function setEntity($entity, $alias = null){
         if($alias){
-            $entity = $entity . ' ' . $alias;
+            $entity = "{$entity} {$alias}";
         }
         $this->entity = $entity;
     }
     /**
-     * Retorna o nome da tabela que sera trabalhado
+     * Get the table/entity to manipulate
      * @return string
      */
     final public function getEntity(){
         return $this->entity;
     }
     /**
-     * Define um critério de seleção
-     * @param \lib\dbquery\SqlCriteria $criteria
+     * Set the criteria of query
+     * @param lib\SqlCriteria $sqlCriteria
      */
-    public function setCriteria(SqlCriteria $criteria){
-        $this->criteria = $criteria;
+    public function setCriteria(SqlCriteria $sqlCriteria){
+        $this->criteria = $sqlCriteria;
     }
+    
+    public function setRowData($column, $value, $stringForces = true){
+        if(!preg_match('/^([[:alnum:]]|_)+$/', $column)){
+            throw new \InvalidArgumentException('Column must be setted');
+        }
+        $this->columnValues[$column] = DataHelper::transform($value, $stringForces);
+    }
+    
     /**
-     * Metodo que retorna a instrução gerada
+     * Return the formated string to execute
      */
     abstract function getInstruction();
 }

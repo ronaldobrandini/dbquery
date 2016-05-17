@@ -41,6 +41,22 @@ class SqlSelectTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($sqlString, $sqlSelect->getInstruction());
     }
     
+    public function testSetRowDataCall()
+    {   
+        try{
+            $sqlSelect = new SqlSelect();
+            $sqlSelect->setEntity('user');
+            $sqlSelect->setRowData('ç-', 1);
+            
+            $sqlSelect->setCriteria(new SqlCriteria());
+            
+        } catch (Exception $e){
+            $this->assertTrue(true);
+            return;
+        }
+        $this->fail('A Exception waiting not throws.');
+    }
+    
     public function testLimitSelect()
     {
         $sqlString = 'SELECT * FROM user LIMIT 10';

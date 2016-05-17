@@ -25,6 +25,12 @@ final class SqlSelect extends SqlInstruction{
         $this->joins[] = $sqlJoin;
     }
     
+    public function setRowData($column, $value, $stringForces = true)
+    {
+        throw new \BadMethodCallException("Cannot call setRowData from " . __CLASS__);
+    }
+
+    
     public function getInstruction() {
         if(!$this->columns){
             throw new DbQueryColumnsNotSet();

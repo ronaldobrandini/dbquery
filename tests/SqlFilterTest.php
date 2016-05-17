@@ -2,6 +2,8 @@
 
 use lib\SqlFilter;
 use lib\SqlExpression;
+use lib\SqlSelect;
+use lib\SqlBetween;
 
 /**
  * Description of SqlFilterTest
@@ -60,7 +62,7 @@ class SqlFilterTest extends \PHPUnit_Framework_TestCase
     
     public function testBasicString()
     {
-        $str = 'id = "string"';
+        $str = 'id = \'string\'';
         $filtro = new SqlFilter('id', SqlExpression::_EQUAL_, "string");
         // Assert
         $this->assertEquals($str, $filtro->dump());
@@ -94,6 +96,28 @@ class SqlFilterTest extends \PHPUnit_Framework_TestCase
     {
         $str = 'id = false';
         $filtro = new SqlFilter('id', SqlExpression::_EQUAL_, false);
+        // Assert
+        $this->assertEquals($str, $filtro->dump());
+    }
+    
+    public function testBasicSubquery()
+    {
+        
+        $str = 'id IN (SELECT id FROM user)';
+        
+        $sqlSelect = new SqlSelect();
+        $sqlSelect->addColumn('id');
+        $sqlSelect->setEntity('user');
+        
+        $filtro = new SqlFilter('id', SqlExpression::_IN_, $sqlSelect);
+        // Assert
+        $this->assertEquals($str, $filtro->dump());
+    }
+    
+    public function testBasicBetween()
+    {
+        $str = 'date BETWEEN \'2016-01-01\' AND \'2016-01-31\'';
+        $filtro = new SqlFilter('date', SqlExpression::_BETWEEN_, new SqlBetween('2016-01-01', SqlExpression::_AND_, '2016-01-31'));
         // Assert
         $this->assertEquals($str, $filtro->dump());
     }

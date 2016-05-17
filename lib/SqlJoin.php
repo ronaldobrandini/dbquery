@@ -11,8 +11,8 @@ class SqlJoin extends SqlInstruction
     const _INNER_ = 'INNER';
     const _LEFT_ = 'LEFT';
     const _RIGHT_ = 'RIGHT';
-    const _OUTER_ = ' OUTER ';
-    const _FULL_ = ' FULL ';
+    const _OUTER_ = 'OUTER';
+    const _FULL_ = 'FULL';
     
     private $type;
     private $filters = array();

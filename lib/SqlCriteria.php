@@ -4,15 +4,17 @@ namespace lib;
  * 
  */
 class SqlCriteria extends SqlExpression{
-    private $expressions = array();
-    private $operators = array();
-    private $properties = array();
+    private $expressions;
+    private $operators;
+    private $properties;
     
     public function __construct(){
         $this->expressions = array();
         $this->operators = array();
+        $this->properties = array();
     }
     /**
+     * Add a new filter into criteria
      * 
      * @param lib\SqlExpression $expression
      * @param string $operador
@@ -43,21 +45,26 @@ class SqlCriteria extends SqlExpression{
         }
     }
     /**
+     * Sets a property to a criteria
      * 
      * @param string $property
      * @param mixed $value
      */
-    public function setProperty($property, $value){
-        if(is_null($value)){
+    public function setProperty($property, $value, $expression = null){
+        if(is_null($value) || $value === ''){
             throw new \InvalidArgumentException('The value of property ' . $property . ' can not be null.');
         }
-        if (isset($value) && !empty($value) && strlen($value) > 0){
+        if (strlen($value) > 0){
+            if($expression){
+                $value = "{$value}{$expression}";
+            }
             $this->properties[$property] = $value;
         }else{
             $this->properties[$property] = false;
         }
     }
     /**
+     * Get a property from a criteria
      * 
      * @param type $property
      * @return string

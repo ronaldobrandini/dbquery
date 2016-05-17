@@ -1,0 +1,45 @@
+# DBQuery
+
+
+
+## Installation
+
+Install the latest version with
+
+```bash
+$ composer require rony/DBQuery
+```
+
+## Basic Usage
+
+```php
+<?php
+
+use lib\SqlSelect;
+
+$sqlString = 'SELECT * FROM user';
+        
+$sqlSelect = new SqlSelect();
+$sqlSelect->addColumn('*');
+$sqlSelect->setEntity('user');
+echo $sqlSelect->getInstruction();
+```
+
+## Documentation
+
+Coming Soon
+
+
+## About
+
+### Requirements
+
+- Dbquery works with PHP 5.3 or above.
+
+### Submitting bugs and feature requests
+
+Bugs and feature request are tracked on [GitHub](https://github.com/ronaldobrandini/dbquery/issues)
+
+### License
+
+DBQuery is licensed under the MIT License - see the `LICENSE` file for details
