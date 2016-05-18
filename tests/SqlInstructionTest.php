@@ -1,57 +1,44 @@
 <?php
 
-use DBQuery\SqlSelect;
 use DBQuery\SqlInsert;
+use DBQuery\SqlSelect;
 
 class SqlInstructionTest extends \PHPUnit_Framework_TestCase
 {
     public function testSetEntityWithoutAlias()
     {
-        $sqlString = 'user';
-        
         $sqlSelect = new SqlSelect();
         $sqlSelect->setEntity('user');
-        
+        $expectedResults = 'user';
 
-        // Assert
-        $this->assertEquals($sqlString, $sqlSelect->getEntity());
+        $this->assertEquals($expectedResults, $sqlSelect->getEntity());
     }
-    
+
     public function testSetEntityWithAlias()
     {
-        $sqlString = 'user u';
-        
         $sqlSelect = new SqlSelect();
         $sqlSelect->setEntity('user', 'u');
-        
+        $expectedResults = 'user u';
 
-        // Assert
-        $this->assertEquals($sqlString, $sqlSelect->getEntity());
+        $this->assertEquals($expectedResults, $sqlSelect->getEntity());
     }
-    
+
     public function testSetRowDataInvalidColumn()
     {
-        $sqlString = 'user u';
-        
         $sqlSelect = new SqlSelect();
         $sqlSelect->setEntity('user', 'u');
-        
+        $expectedResult = 'user u';
 
-        // Assert
-        $this->assertEquals($sqlString, $sqlSelect->getEntity());
+        $this->assertEquals($expectedResult, $sqlSelect->getEntity());
     }
-    
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
     public function testInvalidColumnName()
-    {   
-        try{
-            $sqlInsert = new SqlInsert();
-            $sqlInsert->setEntity('user');
-            $sqlInsert->setRowData('ç-', 1);
-            
-        } catch (InvalidArgumentException $e){
-            $this->assertTrue(true);
-            return;
-        }
-        $this->fail('A InvalidArgumentException waiting not throws.');
+    {
+        $sqlInsert = new SqlInsert();
+        $sqlInsert->setEntity('user');
+        $sqlInsert->setRowData('ç-', 1);
     }
 }

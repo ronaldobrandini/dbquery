@@ -5,30 +5,21 @@ use DBQuery\SqlCriteria;
 use DBQuery\SqlFilter;
 use DBQuery\SqlExpression;
 
-/**
- * Description of SqlUpdateTest
- *
- * @author desenvolvimento
- */
 class SqlUpdateTest extends \PHPUnit_Framework_TestCase
 {
     public function testBasic()
     {
-        $sqlString = 'UPDATE user SET name = \'Ronaldo\'';
-        
         $sqlUpdate = new SqlUpdate();
         $sqlUpdate->setEntity('user');
         $sqlUpdate->setRowData('name', 'Ronaldo');
-        
 
-        // Assert
-        $this->assertEquals($sqlString, $sqlUpdate->getInstruction());
+        $expectedResult = 'UPDATE user SET name = \'Ronaldo\'';
+
+        $this->assertEquals($expectedResult, $sqlUpdate->getInstruction());
     }
     
     public function testBasicCriteria()
     {
-        $sqlString = 'UPDATE user SET name = \'Ronaldo\' WHERE (id = 2)';
-        
         $sqlUpdate = new SqlUpdate();
         $sqlUpdate->setEntity('user');
         $sqlUpdate->setRowData('name', 'Ronaldo');
@@ -37,8 +28,8 @@ class SqlUpdateTest extends \PHPUnit_Framework_TestCase
         $sqlCriteria->add(new SqlFilter('id', SqlExpression::_EQUAL_, 2));
         
         $sqlUpdate->setCriteria($sqlCriteria);
+        $expectedResult = 'UPDATE user SET name = \'Ronaldo\' WHERE (id = 2)';
 
-        // Assert
-        $this->assertEquals($sqlString, $sqlUpdate->getInstruction());
+        $this->assertEquals($expectedResult, $sqlUpdate->getInstruction());
     }
 }
