@@ -1,7 +1,7 @@
 # DBQuery
 
 
-
+[![Build Status](https://travis-ci.org/ronaldobrandini/dbquery.svg?branch=master)](https://travis-ci.org/ronaldobrandini/dbquery)
 
 ## Installation
 
