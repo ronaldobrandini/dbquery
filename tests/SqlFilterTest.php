@@ -5,120 +5,115 @@ use DBQuery\SqlExpression;
 use DBQuery\SqlSelect;
 use DBQuery\SqlBetween;
 
-/**
- * Description of SqlFilterTest
- *
- * @author desenvolvimento
- */
 class SqlFilterTest extends \PHPUnit_Framework_TestCase
 {
     public function testBasicEqual()
     {
-        $str = 'id = 1';
-        $filtro = new SqlFilter('id', SqlExpression::_EQUAL_, 1);
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id = 1';
+        $filter = new SqlFilter('id', SqlExpression::_EQUAL_, 1);
+
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicIn()
     {
-        $str = 'id IN 1';
-        $filtro = new SqlFilter('id', SqlExpression::_IN_, 1);
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id IN 1';
+        $filter = new SqlFilter('id', SqlExpression::_IN_, 1);
+
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicNotIn()
     {
-        $str = 'id NOT IN 1';
-        $filtro = new SqlFilter('id', SqlExpression::_NOT_IN_, 1);
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id NOT IN 1';
+        $filter = new SqlFilter('id', SqlExpression::_NOT_IN_, 1);
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicIs()
     {
-        $str = 'id IS 1';
-        $filtro = new SqlFilter('id', SqlExpression::_IS_, 1);
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id IS 1';
+        $filter = new SqlFilter('id', SqlExpression::_IS_, 1);
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicIsNot()
     {
-        $str = 'id IS NOT 1';
-        $filtro = new SqlFilter('id', SqlExpression::_IS_NOT_, 1);
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id IS NOT 1';
+        $filter = new SqlFilter('id', SqlExpression::_IS_NOT_, 1);
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicInt()
     {
-        $str = 'id = 1';
-        $filtro = new SqlFilter('id', SqlExpression::_EQUAL_, 1);
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id = 1';
+        $filter = new SqlFilter('id', SqlExpression::_EQUAL_, 1);
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicString()
     {
-        $str = 'id = \'string\'';
-        $filtro = new SqlFilter('id', SqlExpression::_EQUAL_, "string");
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id = \'string\'';
+        $filter = new SqlFilter('id', SqlExpression::_EQUAL_, "string");
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicNull()
     {
-        $str = 'id = null';
-        $filtro = new SqlFilter('id', SqlExpression::_EQUAL_, null);
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id = null';
+        $filter = new SqlFilter('id', SqlExpression::_EQUAL_, null);
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicArray()
     {
-        $str = 'id = (1, 2, 3)';
-        $filtro = new SqlFilter('id', SqlExpression::_EQUAL_, array(1,2,3));
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id = (1, 2, 3)';
+        $filter = new SqlFilter('id', SqlExpression::_EQUAL_, array(1,2,3));
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicTrue()
     {
-        $str = 'id = true';
-        $filtro = new SqlFilter('id', SqlExpression::_EQUAL_, true);
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id = true';
+        $filter = new SqlFilter('id', SqlExpression::_EQUAL_, true);
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicFalse()
     {
-        $str = 'id = false';
-        $filtro = new SqlFilter('id', SqlExpression::_EQUAL_, false);
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'id = false';
+        $filter = new SqlFilter('id', SqlExpression::_EQUAL_, false);
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicSubquery()
     {
         
-        $str = 'id IN (SELECT id FROM user)';
+        $expectedResult = 'id IN (SELECT id FROM user)';
         
         $sqlSelect = new SqlSelect();
         $sqlSelect->addColumn('id');
         $sqlSelect->setEntity('user');
         
-        $filtro = new SqlFilter('id', SqlExpression::_IN_, $sqlSelect);
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $filter = new SqlFilter('id', SqlExpression::_IN_, $sqlSelect);
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
     
     public function testBasicBetween()
     {
-        $str = 'date BETWEEN \'2016-01-01\' AND \'2016-01-31\'';
-        $filtro = new SqlFilter('date', SqlExpression::_BETWEEN_, new SqlBetween('2016-01-01', SqlExpression::_AND_, '2016-01-31'));
-        // Assert
-        $this->assertEquals($str, $filtro->dump());
+        $expectedResult = 'date BETWEEN \'2016-01-01\' AND \'2016-01-31\'';
+        $filter = new SqlFilter('date', SqlExpression::_BETWEEN_, new SqlBetween('2016-01-01', SqlExpression::_AND_, '2016-01-31'));
+        
+        $this->assertEquals($expectedResult, $filter->dump());
     }
 }
